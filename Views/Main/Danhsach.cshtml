@@ -1,0 +1,77 @@
+@model DanhsachVm
+@{
+    ViewData["Title"] = Model.Theloai ?? "Tất cả sách";
+    var luoi = Model.Kieu == "grid";
+}
+<div class="w pg">
+    <p class="mu" style="margin-bottom:10px"><a asp-controller="Main" asp-action="Index">Trang chủ</a> / Sách</p>
+    <form method="get" asp-controller="Main" asp-action="Danhsach" class="lay" data-auto>
+        <input type="hidden" name="q" value="@Model.Q" />
+        <input type="hidden" name="kieu" id="kieu" value="@Model.Kieu" />
+        <aside class="card fb">
+            <h4>Danh mục</h4>
+            <label class="ck"><input type="radio" name="theloai" value="" checked="@string.IsNullOrEmpty(Model.Theloai)" />Tất cả</label>
+            @foreach (var c in Model.Theloais)
+            {
+                <label class="ck"><input type="radio" name="theloai" value="@c.Tentheloai" checked="@(Model.Theloai == c.Tentheloai)" />@c.Tentheloai</label>
+            }
+            <h4>Tình trạng</h4>
+            @foreach (var c in Rules.Tinhtrang)
+            {
+                <label class="ck"><input type="checkbox" name="tinhtrang" value="@c" checked="@Model.Tinhtrang.Contains(c)" />@c</label>
+            }
+            <h4>Khoảng giá (đ)</h4>
+            <div class="fl2">
+                <input class="inp" type="number" name="giatu" placeholder="Từ" value="@Model.Giatu" />
+                <input class="inp" type="number" name="giaden" placeholder="Đến" value="@Model.Giaden" />
+            </div>
+            <a class="btn g f" style="margin-top:14px" asp-controller="Main" asp-action="Danhsach" asp-route-kieu="@(luoi ? null : "list")">Xóa bộ lọc</a>
+            <noscript><button type="submit" class="btn f" style="margin-top:8px">Áp dụng</button></noscript>
+        </aside>
+        <div>
+            <div class="tb">
+                <div><h2>@(Model.Theloai ?? "Tất cả sách")</h2><small>@Model.Tong kết quả</small></div>
+                <div class="fl2">
+                    <select class="inp" name="sapxep" style="width:auto">
+                        <option value="new" selected="@(Model.Sapxep == "new")">Mới nhất</option>
+                        <option value="lo" selected="@(Model.Sapxep == "lo")">Giá tăng dần</option>
+                        <option value="hi" selected="@(Model.Sapxep == "hi")">Giá giảm dần</option>
+                    </select>
+                    <button type="button" class="btn @(luoi ? "" : "g") s" data-kieu="grid">Lưới</button>
+                    <button type="button" class="btn @(luoi ? "g" : "") s" data-kieu="list">Danh sách</button>
+                </div>
+            </div>
+            @if (Model.Sachs.Count == 0)
+            {
+                <div class="card mu">Không tìm thấy sách phù hợp bộ lọc.</div>
+            }
+            else if (luoi)
+            {
+                <div class="grid">
+                    @foreach (var s in Model.Sachs)
+                    {
+                        <partial name="_BookCard" model="s" />
+                    }
+                </div>
+            }
+            else
+            {
+                <div style="display:grid;gap:12px">
+                    @foreach (var s in Model.Sachs)
+                    {
+                        <partial name="_BookRow" model="s" />
+                    }
+                </div>
+            }
+            @if (Model.TongTrang > 1)
+            {
+                <div class="pgn">
+                    @for (int i = 1; i <= Model.TongTrang; i++)
+                    {
+                        <a class="@(i == Model.Trang ? "on" : "")" href="@Model.Url(i)">@i</a>
+                    }
+                </div>
+            }
+        </div>
+    </form>
+</div>

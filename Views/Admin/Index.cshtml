@@ -1,0 +1,46 @@
+@model AdminHomeVm
+@{
+    ViewData["AdTitle"] = "Tổng quan";
+    int mx = Math.Max(1, Model.TheoTheloai.Count == 0 ? 1 : Model.TheoTheloai.Max(c => c.Soluong));
+}
+<div class="g4 ak">
+    @foreach (var k in Model.Kpis)
+    {
+        <div class="kt"><small>@k.Nhan</small><b>@k.GiaTri</b>@if (!string.IsNullOrEmpty(k.Nhandien)){<em>@k.Nhandien</em>}@Chart.Spark(k.Spark)</div>
+    }
+</div>
+<div class="ad3">
+    <div class="pn">
+        <div class="sh2"><h3>Giá trị giao dịch theo tuần</h3><small>triệu đồng · 12 tuần</small></div>
+        @Chart.Area(Model.GmvTuan)
+        <div class="cb">
+            @foreach (var c in Model.TheoTheloai)
+            {
+                <div><small>@c.Ten</small><i><s style="width:@((c.Soluong * 100.0 / mx).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture))%"></s></i><b>@c.Soluong</b></div>
+            }
+        </div>
+    </div>
+    <div class="pn">
+        <div class="sh2"><h3>Cần xử lý</h3></div>
+        @foreach (var q in Model.Quick)
+        {
+            <a class="qr @(q.Soluong > 0 ? "" : "z")" asp-controller="Admin" asp-action="@q.Action" asp-route-f="@q.F"><b>@(q.Soluong > 0 ? q.Soluong.ToString() : "✓")</b><span>@q.Nhan</span>@Fmt.Icon("ar", 15)</a>
+        }
+    </div>
+</div>
+<div class="pn" style="padding:0;overflow:auto;margin-top:14px">
+    <div class="sh2" style="padding:18px 20px 0"><h3>Đơn hàng gần đây</h3><a asp-controller="Admin" asp-action="Dondat">Xem tất cả</a></div>
+    <table class="at">
+        <tr><th>Mã đơn</th><th>Sách</th><th>Người mua</th><th>Tổng thu</th><th>Ngày</th><th>Trạng thái</th></tr>
+        @foreach (var o in Model.DonGanDay)
+        {
+            <tr data-href="@Url.Action("Dondat", "Admin", new { id = o.Donhangid })">
+                <td><b>@o.Ma</b></td><td>@o.Sach?.Tensach</td><td>@o.Nguoimua?.HoTen</td><td>@Fmt.Money(o.Tongtien)</td><td>@Fmt.Date(o.Ngaydat)</td><td>@Ui.DotDon(o.Trangthai)</td>
+            </tr>
+        }
+        @if (Model.DonGanDay.Count == 0)
+        {
+            <tr><td colspan="6" class="mu" style="padding:30px;text-align:center">Chưa có đơn hàng.</td></tr>
+        }
+    </table>
+</div>
