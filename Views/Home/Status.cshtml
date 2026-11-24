@@ -1,0 +1,12 @@
+@{
+    int code = ViewBag.Code ?? 404;
+    ViewData["Title"] = code == 404 ? "Không tìm thấy" : "Có lỗi";
+}
+
+<div class="w pg">
+    <div class="card" style="max-width:560px;margin:30px auto;text-align:center">
+        <h1>@(code == 404 ? "Không tìm thấy trang" : "Không thể hiển thị trang")</h1>
+        <p class="mu" style="margin:8px 0 14px">@(code == 404 ? "Trang bạn tìm không tồn tại hoặc tin đăng đã bị gỡ." : "Mã lỗi " + code + ".")</p>
+        <a class="btn" asp-controller="Main" asp-action="Index">Về trang chủ</a>
+    </div>
+</div>
