@@ -1,0 +1,11 @@
+@model Sach
+<a class="bk rw" asp-controller="Main" asp-action="Details" asp-route-id="@Model.Sachid">
+    <div class="im">@Ui.Cover(Model)</div>
+    <div>
+        <h3>@Model.Tensach</h3>
+        <small>@Model.Tacgia · @Model.Theloai?.Tentheloai · @Model.Nhaxuatban</small>
+        <p class="mu" style="margin:6px 0">@Fmt.Truncate(Model.Mota, 100)</p>
+        <div class="mt">@Ui.Tag(Model)<em class="t">@Model.Tinhtrang</em><small>@Model.Nguoiban?.HoTen · @Model.Nguoiban?.Tinh</small></div>
+    </div>
+    <div style="text-align:right"><div class="pr" style="font-size:18px">@Fmt.Money(Model.Gia)</div></div>
+</a>

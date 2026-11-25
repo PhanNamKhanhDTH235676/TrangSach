@@ -1,0 +1,23 @@
+@model AdminListVm<Sach>
+@{
+    ViewData["AdTitle"] = Model.Tieude;
+}
+@section Search { <partial name="_AdminSearch" model="Model" /> }
+<partial name="_AdminChips" model="Model" />
+<div class="pn" style="padding:0;overflow:auto">
+    <table class="at">
+        <tr><th>Sách</th><th>Người bán</th><th>Giá</th><th>Lượt xem</th><th>Trạng thái</th></tr>
+        @foreach (var b in Model.Items)
+        {
+            <tr data-href="@Url.Action(Model.Action, "Admin", new { f = Model.F, q = Model.Q, id = b.Sachid })">
+                <td><div class="fl2">@Ui.Mini(b)<div><b>@b.Tensach</b><br><small>@b.Tacgia · @b.Theloai?.Tentheloai</small></div></div></td>
+                <td>@b.Nguoiban?.HoTen</td><td>@Fmt.Money(b.Gia)</td><td>@b.Luotxem</td><td>@Ui.DotTin(b)</td>
+            </tr>
+        }
+        @if (Model.Items.Count == 0)
+        {
+            <tr><td colspan="9" class="mu" style="padding:44px;text-align:center">Không có mục nào.</td></tr>
+        }
+    </table>
+</div>
+@section Drawer { @if (Model.Drawer != null){<partial name="_Drawer" model="Model.Drawer" />} }

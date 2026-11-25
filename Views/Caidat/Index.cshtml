@@ -1,0 +1,98 @@
+@model CaidatVm
+@{
+    ViewData["Title"] = "Cài đặt tài khoản";
+    var me = Model.Me;
+    var muc = new[] { ("hoso", "Hồ sơ"), ("diachi", "Địa chỉ"), ("thanhtoan", "Thanh toán"), ("baomat", "Bảo mật") };
+    var tenMuc = muc.First(m => m.Item1 == Model.Muc).Item2;
+}
+<div class="w pg">
+    <h1 style="margin-bottom:16px">Cài đặt tài khoản</h1>
+    <div class="se">
+        <aside class="card" style="padding:8px">
+            @foreach (var (k, t) in muc)
+            {
+                <a class="@(k == Model.Muc ? "on" : "")" asp-controller="Caidat" asp-action="Index" asp-route-muc="@k">@t</a>
+            }
+        </aside>
+        <div class="card">
+            <h2 style="margin-bottom:6px">@tenMuc</h2>
+
+            @if (Model.Muc == "hoso")
+            {
+                <form method="post" asp-controller="Caidat" asp-action="Luuhoso">
+                    <div class="f2">
+                        <div><label class="l">Họ tên</label><input class="inp" name="HoTen" value="@me.HoTen" maxlength="100" /></div>
+                        <div><label class="l">Email</label><input class="inp" value="@me.Email" readonly /></div>
+                        <div><label class="l">Số điện thoại</label><input class="inp" name="SoDienThoai" value="@Model.Dienthoai" /></div>
+                        <div><label class="l">Tỉnh/Thành</label><input class="inp" name="Tinh" value="@me.Tinh" maxlength="60" /></div>
+                    </div>
+                    <label class="l">Giới thiệu</label>
+                    <textarea class="inp" name="Gioithieu" rows="3" maxlength="500">@me.Gioithieu</textarea>
+                    <button type="submit" class="btn" style="margin-top:16px">Lưu thay đổi</button>
+                </form>
+            }
+            else if (Model.Muc == "diachi")
+            {
+                foreach (var d in Model.Diachis)
+                {
+                    <div class="card" style="margin:10px 0;display:flex;justify-content:space-between;gap:12px;align-items:center">
+                        <div><b>@d.Hoten · @d.Sodienthoai</b><br><small>@d.Diachichitiet</small></div>
+                        <div class="fl2">
+                            @if (d.Macdinh)
+                            {
+                                <em class="t p">Mặc định</em>
+                            }
+                            else
+                            {
+                                <form method="post" class="inl" asp-controller="Caidat" asp-action="Macdinhdiachi" asp-route-id="@d.Diachiid"><button type="submit" class="btn g s">Đặt mặc định</button></form>
+                            }
+                            <form method="post" class="inl" asp-controller="Caidat" asp-action="Xoadiachi" asp-route-id="@d.Diachiid"><button type="submit" class="btn d s">Xóa</button></form>
+                        </div>
+                    </div>
+                }
+                if (Model.Diachis.Count == 0)
+                {
+                    <p class="mu" style="margin:10px 0">Bạn chưa có địa chỉ nào.</p>
+                }
+                <details class="plain">
+                    <summary class="btn o">Thêm địa chỉ</summary>
+                    <form method="post" asp-controller="Caidat" asp-action="Themdiachi">
+                        <div class="f2">
+                            <div><label class="l">Họ tên người nhận</label><input class="inp" name="Hoten" value="@me.HoTen" maxlength="100" /></div>
+                            <div><label class="l">Số điện thoại</label><input class="inp" name="Sodienthoai" value="@Model.Dienthoai" /></div>
+                        </div>
+                        <label class="l">Địa chỉ</label>
+                        <input class="inp" name="Diachichitiet" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" maxlength="250" />
+                        <label class="ck" style="margin-top:12px"><input type="checkbox" name="macdinh" value="true" />Đặt làm địa chỉ mặc định</label>
+                        <button type="submit" class="btn" style="margin-top:12px">Lưu địa chỉ</button>
+                    </form>
+                </details>
+            }
+            else if (Model.Muc == "thanhtoan")
+            {
+                <div class="card" style="background:var(--ps);margin:10px 0">
+                    <small>Số dư ví Trang Sách</small>
+                    <h1>@Fmt.Money(me.SoDuVi)</h1>
+                    <form method="post" asp-controller="Caidat" asp-action="Rutvi"><button type="submit" class="btn" style="margin-top:10px">Rút về ngân hàng</button></form>
+                </div>
+                <form method="post" asp-controller="Caidat" asp-action="Luunganhang">
+                    <label class="l">Tài khoản ngân hàng nhận tiền</label>
+                    <div class="fl2"><input class="inp" name="taikhoan" value="@me.TaiKhoanNganHang" maxlength="100" placeholder="Ngân hàng · số tài khoản" /><button type="submit" class="btn g">Lưu</button></div>
+                </form>
+                <p class="mu" style="margin-top:10px">Tiền bán sách được chuyển vào ví sau 24 giờ kể từ khi người mua xác nhận nhận hàng.</p>
+            }
+            else
+            {
+                <form method="post" asp-controller="Caidat" asp-action="Doimatkhau">
+                    <label class="l">Mật khẩu hiện tại</label><input class="inp" type="password" name="MatKhauHienTai" autocomplete="current-password" />
+                    <label class="l">Mật khẩu mới</label><input class="inp" type="password" name="MatKhauMoi" autocomplete="new-password" />
+                    <button type="submit" class="btn" style="margin:12px 0">Đổi mật khẩu</button>
+                </form>
+                <form method="post" asp-controller="Caidat" asp-action="Luubaomat" data-autosubmit>
+                    <div class="tg"><div><b>Xác thực hai bước</b><br><small>Bảo vệ tài khoản bằng mã OTP</small></div><label class="sw"><input type="checkbox" name="xacthuc2buoc" value="true" checked="@me.Xacthuc2Buoc" /><i></i></label></div>
+                    <div class="tg"><div><b>Cảnh báo đăng nhập lạ</b><br><small>Gửi email khi có thiết bị mới</small></div><label class="sw"><input type="checkbox" name="canhbao" value="true" checked="@me.CanhBaoDangNhap" /><i></i></label></div>
+                </form>
+            }
+        </div>
+    </div>
+</div>
