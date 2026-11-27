@@ -1,0 +1,28 @@
+@model AdminListVm<ApplicationUser>
+@{
+    ViewData["AdTitle"] = Model.Tieude;
+}
+@section Search { <partial name="_AdminSearch" model="Model" /> }
+<partial name="_AdminChips" model="Model" />
+<div class="pn" style="padding:0;overflow:auto">
+    <table class="at">
+        <tr><th>Thành viên</th><th>Khu vực</th><th>Giao dịch</th><th>Đánh giá</th><th>Trạng thái</th></tr>
+        @foreach (var u in Model.Items)
+        {
+            Model.Stats.TryGetValue(u.Id, out var st);
+            bool khoa = u.LockoutEnd != null && u.LockoutEnd > DateTimeOffset.Now;
+            <tr data-href="@Url.Action(Model.Action, "Admin", new { f = Model.F, q = Model.Q, id = u.Id })">
+                <td><div class="fl2">@Ui.Avatar(u.Id, u.HoTen, 32)<div><b>@u.HoTen</b><br><small>@u.Email</small></div></div></td>
+                <td>@u.Tinh</td>
+                <td>@(st?.SoGiaoDich ?? 0)</td>
+                <td>@(st?.Diem == null ? "—" : Fmt.Dec(st.Diem.Value) + " ★")</td>
+                <td>@Ui.DotNguoi(u, khoa)</td>
+            </tr>
+        }
+        @if (Model.Items.Count == 0)
+        {
+            <tr><td colspan="9" class="mu" style="padding:44px;text-align:center">Không có mục nào.</td></tr>
+        }
+    </table>
+</div>
+@section Drawer { @if (Model.Drawer != null){<partial name="_Drawer" model="Model.Drawer" />} }
