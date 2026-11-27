@@ -1,0 +1,42 @@
+@model DonhangIndexVm
+@{
+    ViewData["Title"] = "Đơn hàng";
+    bool mua = Model.Tab == "mua";
+}
+<div class="w pg">
+    <h1 style="margin-bottom:14px">Đơn hàng</h1>
+    <div class="tabs">
+        <a class="@(mua ? "on" : "")" asp-controller="Donhang" asp-action="Index" asp-route-tab="mua">Đã mua</a>
+        <a class="@(mua ? "" : "on")" asp-controller="Donhang" asp-action="Index" asp-route-tab="ban">Đã bán</a>
+    </div>
+    <div class="card" style="padding:0;overflow:auto">
+        <table>
+            <tr><th>Mã đơn</th><th>Sách</th><th>@(mua ? "Người bán" : "Người mua")</th><th>@(mua ? "Đã trả" : "Bạn nhận")</th><th>Ngày</th><th>Tiến trình</th><th></th></tr>
+            @foreach (var o in Model.Items)
+            {
+                <tr>
+                    <td><b>@o.Ma</b></td>
+                    <td>@o.Sach?.Tensach</td>
+                    <td>@(mua ? o.Sach?.Nguoiban?.HoTen : o.Nguoimua?.HoTen)</td>
+                    <td>@Fmt.Money(mua ? o.Tongtien : o.Giasach - o.Phinguoiban)</td>
+                    <td>@Fmt.Date(o.Ngaydat)</td>
+                    <td><em class="t @Rules.DonCss[o.Trangthai]">@Rules.DonTen[o.Trangthai]</em>@Ui.Pbar(o.Trangthai)</td>
+                    <td>
+                        @if (mua && o.Trangthai == 2)
+                        {
+                            <form method="post" class="inl" asp-controller="Donhang" asp-action="Xacnhan" asp-route-id="@o.Donhangid"><button type="submit" class="btn s">Xác nhận đã nhận</button></form>
+                        }
+                        else if (!mua && o.Trangthai == 0)
+                        {
+                            <form method="post" class="inl" asp-controller="Donhang" asp-action="Guisach" asp-route-id="@o.Donhangid"><button type="submit" class="btn s">Đã gửi sách</button></form>
+                        }
+                    </td>
+                </tr>
+            }
+            @if (Model.Items.Count == 0)
+            {
+                <tr><td colspan="7" class="mu">Chưa có đơn hàng.</td></tr>
+            }
+        </table>
+    </div>
+</div>

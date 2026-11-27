@@ -1,0 +1,27 @@
+@model DrawerVm
+<div class="dw on" id="dw">
+    <i data-close="@Model.DongUrl"></i>
+    <div>
+        <div class="dh">
+            <div><small>@Model.Nhan</small><h2>@Model.Tieude</h2></div>
+            <a class="ib" href="@Model.DongUrl">@Fmt.Icon("x")</a>
+        </div>
+        @Model.Dau
+        @foreach (var kv in Model.Dong)
+        {
+            <div class="kv"><span>@kv.Key</span><b>@kv.Value</b></div>
+        }
+        <div class="da">
+            @foreach (var a in Model.Nut)
+            {
+                <form method="post" asp-controller="Admin" asp-action="@a.Action" asp-route-id="@a.RouteId" asp-route-f="@Model.F" asp-route-q="@Model.Q">
+                    <button type="submit" class="btn @a.Css f" data-danger="@(a.Danger ? "1" : null)">@a.Text</button>
+                </form>
+            }
+            @if (Model.LienKet != null)
+            {
+                <a class="btn g f" href="@Model.LienKet">Xem trang công khai</a>
+            }
+        </div>
+    </div>
+</div>

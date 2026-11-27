@@ -1,0 +1,9 @@
+@model IAdminList
+<div class="chips" style="margin-bottom:14px">
+    <a class="chip @(string.IsNullOrEmpty(Model.F) ? "on" : "")" asp-controller="Admin" asp-action="@Model.Action" asp-route-q="@Model.Q">Tất cả <small>@Model.TongTatCa</small></a>
+    @foreach (var c in Model.Chips)
+    {
+        <a class="chip @(Model.F == c.Key ? "on" : "")" asp-controller="Admin" asp-action="@Model.Action" asp-route-f="@c.Key" asp-route-q="@Model.Q">@c.Nhan <small>@c.Soluong</small></a>
+    }
+    <small style="margin-left:auto;align-self:center">@Model.Dem mục</small>
+</div>
