@@ -1,0 +1,159 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TrangSach
+build_property.RootNamespace = TrangSach
+build_property.ProjectDir = /home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/Baocaotin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQmFvY2FvdGluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/Caidat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ2FpZGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/Dondat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRG9uZGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/Thanhvien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGhhbmh2aWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/Tindang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVGluZGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Admin/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Caidat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FpZGF0L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Donhang/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRG9uaGFuZy9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Donhang/Thanhcong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRG9uaGFuZy9UaGFuaGNvbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Donhang/Thanhtoan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRG9uaGFuZy9UaGFuaHRvYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Home/Status.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9TdGF0dXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Hoso/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9zby9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Main/Danhsach.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFpbi9EYW5oc2FjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Main/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFpbi9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Main/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFpbi9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Sach/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2FjaC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/Components/Header/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvSGVhZGVyL0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_AdminChips.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pbkNoaXBzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_AdminSearch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pblNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_BookCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Cb29rQ2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_BookRow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Cb29rUm93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_Drawer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19EcmF3ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/Yeuthich/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWWV1dGhpY2gvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/khanhromvn/Downloads/Công Nghệ Web ASP - Website hỗ trợ trao đổi và mua bán sách cũ (Cá Nhân)/TrangSach/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
