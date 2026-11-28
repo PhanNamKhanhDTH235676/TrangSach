@@ -1,0 +1,112 @@
+@model ChitietVm
+@{
+    var b = Model.Sach;
+    var u = b.Nguoiban!;
+    var nb = Model.Nb;
+    ViewData["Title"] = b.Tensach;
+    var muaDuoc = b.Trangthai == TrangthaiSach.Dangban && !Model.LaChuSach;
+    string Gt(string? s) => string.IsNullOrWhiteSpace(s) ? "—" : s;
+}
+<div class="w pg">
+    <p class="mu" style="margin-bottom:14px"><a asp-controller="Main" asp-action="Index">Trang chủ</a> / <a asp-controller="Main" asp-action="Danhsach" asp-route-theloai="@b.Theloai?.Tentheloai">@b.Theloai?.Tentheloai</a> / @b.Tensach</p>
+    <div class="dt">
+        <div class="gal">
+            <div class="m">@Ui.Cover(b, 18)</div>
+            <div class="th2">@for (int i = 0; i < 3; i++){<div>@Ui.Cover(b, 4, i)</div>}</div>
+        </div>
+        <div>
+            <div class="mt" style="margin:0 0 8px">@Ui.Tag(b)<em class="t">@b.Tinhtrang</em>@if (!string.IsNullOrEmpty(b.Hinhthucbia)){<em class="t">@b.Hinhthucbia</em>}</div>
+            <h1>@b.Tensach</h1>
+            <p class="mu" style="margin:4px 0">Tác giả: <b style="color:var(--ink)">@b.Tacgia</b>@if (!string.IsNullOrEmpty(b.Nhaxuatban)){<text> · @b.Nhaxuatban</text>}@if (b.Namxb != null){<text> · @b.Namxb</text>}</p>
+            @if (nb.Diem != null)
+            {
+                <p>@Ui.Stars(nb.Diem.Value) <small>@Fmt.Dec(nb.Diem.Value) (@nb.SoDanhGia đánh giá người bán)</small></p>
+            }
+            else
+            {
+                <p><small>Người bán chưa có đánh giá</small></p>
+            }
+            <div style="margin:16px 0;padding:14px 16px;background:var(--bg2);border-radius:8px"><span class="big">@Fmt.Money(b.Gia)</span> <small>Giá cố định · không trả giá</small></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+                @if (muaDuoc)
+                {
+                    <a class="btn" asp-controller="Donhang" asp-action="Thanhtoan" asp-route-id="@b.Sachid">Mua ngay · @Fmt.Money(b.Gia)</a>
+                }
+                else
+                {
+                    <em class="t">@(Model.LaChuSach ? "Tin của bạn" : "Không còn để mua")</em>
+                }
+                <button type="button" class="btn g" data-wish="@b.Sachid" data-url="@Url.Action("Toggle", "Yeuthich", new { id = b.Sachid })" data-on="Bỏ yêu thích" data-off="Yêu thích">@(Model.DaYeuThich ? "Bỏ yêu thích" : "Yêu thích")</button>
+            </div>
+            <div class="shield">@Fmt.Icon("sh")<div><b>Bảo vệ người mua.</b> Tiền được giữ trung gian đến khi bạn xác nhận nhận sách đúng mô tả; hoàn tiền trong 48 giờ nếu có sai khác.</div></div>
+        </div>
+        <aside class="card">
+            <div class="fl2">@Ui.Avatar(u.Id, u.HoTen, 44)<div><b>@u.HoTen</b><br><small>@u.Tinh · tham gia @u.NamThamGia</small></div></div>
+            <div class="sm" style="margin:12px 0">
+                <div><span>Đánh giá</span><b>@(nb.Diem == null ? "—" : Fmt.Dec(nb.Diem.Value) + "/5")</b></div>
+                <div><span>Giao dịch</span><b>@nb.SoGiaoDich</b></div>
+                <div><span>Phản hồi</span><b>98%</b></div>
+            </div>
+            @if (u.DaXacMinh)
+            {
+                <em class="t ok">Đã xác minh danh tính</em>
+            }
+            else
+            {
+                <em class="t wn">Chưa xác minh danh tính</em>
+            }
+            <a class="btn o f" style="margin-top:12px" asp-controller="Hoso" asp-action="Index" asp-route-id="@u.Id">Xem trang người bán</a>
+            <form method="post" asp-controller="Baocao" asp-action="Create" asp-route-id="@b.Sachid">
+                <button type="submit" class="btn g f" style="margin-top:8px">Báo cáo tin đăng</button>
+            </form>
+        </aside>
+    </div>
+
+    <div class="sec" data-tabs>
+        <div class="tabs">
+            <a class="on" data-tab="mota">Mô tả</a>
+            <a data-tab="thongso">Thông số</a>
+            <a data-tab="danhgia">Đánh giá người bán</a>
+        </div>
+        <div class="card">
+            <div class="pane on" data-pane="mota"><p class="mu">@Gt(b.Mota)</p></div>
+            <div class="pane" data-pane="thongso">
+                <table class="spec">
+                    <tr><td>Tác giả</td><td>@b.Tacgia</td></tr>
+                    <tr><td>Nhà xuất bản</td><td>@Gt(b.Nhaxuatban)</td></tr>
+                    <tr><td>Năm xuất bản</td><td>@(b.Namxb?.ToString() ?? "—")</td></tr>
+                    <tr><td>Số trang</td><td>@(b.Sotrang?.ToString() ?? "—")</td></tr>
+                    <tr><td>Hình thức bìa</td><td>@Gt(b.Hinhthucbia)</td></tr>
+                    <tr><td>Ngôn ngữ</td><td>Tiếng Việt</td></tr>
+                    <tr><td>ISBN</td><td>@Gt(b.Isbn)</td></tr>
+                    <tr><td>Tình trạng</td><td>@b.Tinhtrang</td></tr>
+                    <tr><td>Lượt xem</td><td>@b.Luotxem</td></tr>
+                </table>
+            </div>
+            <div class="pane" data-pane="danhgia">
+                @foreach (var d in Model.Danhgias)
+                {
+                    <div class="ofr">@Ui.Avatar(d.Nguoidanhgiaid, d.Nguoidanhgia?.HoTen, 34)<div><b>@d.Nguoidanhgia?.HoTen</b> @Ui.Stars(d.Sao)<br>@d.Noidung</div></div>
+                }
+                @if (Model.Danhgias.Count == 0)
+                {
+                    <p class="mu">Người bán chưa có đánh giá.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="sec">
+        <div class="sh"><h2>Sách tương tự</h2></div>
+        <div class="grid">
+            @foreach (var s in Model.Tuongtu)
+            {
+                <partial name="_BookCard" model="s" />
+            }
+        </div>
+        @if (Model.Tuongtu.Count == 0)
+        {
+            <div class="card mu">Chưa có sách tương tự.</div>
+        }
+    </div>
+</div>

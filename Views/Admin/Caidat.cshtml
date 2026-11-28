@@ -1,0 +1,38 @@
+@model AdminCaidatVm
+@{
+    ViewData["AdTitle"] = "Cài đặt";
+}
+<div class="ad3 s2">
+    <div class="pn">
+        <h3>Biểu phí môi giới</h3>
+        <p class="mu">Áp dụng cho mọi đơn mới và hiển thị tự động ở trang chủ, trang đăng bán.</p>
+        <form method="post" asp-controller="Admin" asp-action="Luuphi" data-autosubmit>
+            <label class="l">Phí người bán</label>
+            <div class="fl2"><input class="inp" type="number" name="phiban" min="0" max="100" value="@Model.Cfg.Phiban" /><span class="mu">%</span></div>
+            <label class="l">Phí bảo vệ người mua</label>
+            <div class="fl2"><input class="inp" type="number" name="phimua" min="0" max="100" value="@Model.Cfg.Phimua" /><span class="mu">%</span></div>
+            <label class="l">Phí vận chuyển</label>
+            <div class="fl2"><input class="inp" type="number" name="phivanchuyen" min="0" value="@Model.Cfg.Phivanchuyen" /><span class="mu">đ</span></div>
+            <div class="tg" style="margin-top:12px">
+                <div><b>Duyệt tin trước khi hiển thị</b><br><small>Tin mới chờ bạn phê duyệt mới được đăng</small></div>
+                <label class="sw"><input type="checkbox" name="duyettruoc" value="true" checked="@Model.Cfg.Duyettruoc" /><i></i></label>
+            </div>
+        </form>
+    </div>
+    <div class="pn">
+        <h3>Thể loại sách</h3>
+        <p class="mu">Hiển thị ở thanh điều hướng và form đăng bán.</p>
+        <div class="chips" style="margin:14px 0">
+            @foreach (var c in Model.Theloais)
+            {
+                <span class="chip">@c.Tentheloai
+                    <form method="post" class="inl" asp-controller="Admin" asp-action="Xoatheloai" asp-route-id="@c.Theloaiid"><button type="submit" title="Xóa thể loại" style="border:0;background:none;cursor:pointer;margin-left:4px;font-weight:700;color:inherit">×</button></form>
+                </span>
+            }
+        </div>
+        <form method="post" class="fl2" asp-controller="Admin" asp-action="Themtheloai">
+            <input class="inp" name="ten" maxlength="60" placeholder="Thêm thể loại mới…" />
+            <button type="submit" class="btn">Thêm</button>
+        </form>
+    </div>
+</div>

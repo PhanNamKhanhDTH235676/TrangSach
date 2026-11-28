@@ -1,0 +1,31 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<div class="w pg">
+    <div class="au">
+        <div style="text-align:center;margin-bottom:6px"><h1>Đăng nhập</h1><p class="mu">Đăng nhập để xem, mua và đăng bán sách cũ</p></div>
+        <div class="tabs">
+            <a class="on" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Đăng nhập</a>
+            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Đăng ký</a>
+        </div>
+        <form class="card" method="post" asp-route-returnUrl="@Model.ReturnUrl" novalidate>
+            <label class="l" asp-for="Input.Email">Email</label>
+            <input class="inp" asp-for="Input.Email" type="email" autocomplete="username" autofocus />
+            <label class="l" asp-for="Input.Password">Mật khẩu</label>
+            <input class="inp" asp-for="Input.Password" autocomplete="current-password" />
+            <div class="em" asp-validation-summary="All"></div>
+            <button type="submit" class="btn f" style="margin-top:6px">Đăng nhập</button>
+            @if (Model.HienGoiY)
+            {
+                <p class="mu" style="text-align:center;margin-top:12px;font-size:12px">Demo quản trị: admin@@trangsach.vn / Admin@@123</p>
+            }
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
